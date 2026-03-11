@@ -1,9 +1,10 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
 <meta charset="UTF-8">
-<title>CompuLab Manager-Menu Principal</title>
+<title>CompuLab Manager - Dashboard</title>
 
 <style>
 
@@ -18,7 +19,6 @@ body{
 background:#f4f6f9;
 }
 
-/* CONTENEDOR */
 .container{
 display:flex;
 height:100vh;
@@ -84,6 +84,8 @@ border:none;
 padding:10px;
 border-radius:6px;
 cursor:pointer;
+text-decoration:none;
+text-align:center;
 }
 
 /* MAIN */
@@ -121,6 +123,7 @@ font-size:14px;
 
 .content{
 padding:25px;
+overflow:auto;
 }
 
 .content h1{
@@ -164,41 +167,13 @@ color:#555;
 .black{border-color:#000;}
 .gray{border-color:#999;}
 
-/* FLUJO */
-
-.flow{
-border:2px solid #facc15;
-padding:20px;
-border-radius:10px;
-margin-bottom:25px;
-}
-
-.flow h3{
-margin-bottom:15px;
-}
-
-.flow-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-}
-
-.box{
-padding:15px;
-border-radius:8px;
-color:white;
-}
-
-.entrada{background:#facc15;color:black;}
-.proceso{background:#ef4444;}
-.salida{background:black;}
-
 /* ACTIVIDAD */
 
 .activity{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:20px;
+margin-bottom:25px;
 }
 
 .panel{
@@ -206,6 +181,7 @@ background:white;
 border-radius:10px;
 padding:20px;
 border:1px solid #ddd;
+margin-bottom:20px;
 }
 
 .panel h3{
@@ -220,6 +196,31 @@ font-size:14px;
 
 .item:last-child{
 border:none;
+}
+
+/* FORMULARIOS */
+
+form input,
+form select,
+form textarea{
+width:100%;
+padding:8px;
+margin-bottom:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+background:#facc15;
+border:none;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
+
+button:hover{
+background:#eab308;
 }
 
 </style>
@@ -242,9 +243,9 @@ border:none;
 <ul>
 <li class="active"><a href="dashboard.html">Dashboard</a></li>
 <li><a href="requisiciones.html">Requisiciones</a></li>
-<li><a href="vales de salida.html">Vales de Salida</a></li>
-<li><a href="reporte de fallas.html">Reportes de Falla</a></li>
-<li><a href="mantenimiento.html">Mantenimientos</a></li>
+<li><a href="vales.html">Vales de Salida</a></li>
+<li><a href="reportes.html">Reportes de Falla</a></li>
+<li><a href="mantenimientos.html">Mantenimientos</a></li>
 <li><a href="equipos.html">Equipos</a></li>
 <li><a href="usuarios.html">Usuarios</a></li>
 </ul>
@@ -293,48 +294,6 @@ border:none;
 
 </div>
 
-<!-- FLUJO -->
-
-<div class="flow">
-
-<h3>Flujo del Sistema</h3>
-
-<div class="flow-grid">
-
-<div class="box entrada">
-<b>ENTRADAS</b>
-<ul>
-<li>Requisiciones</li>
-<li>Vales de salida</li>
-<li>Reportes de falla</li>
-<li>Registro de equipos</li>
-</ul>
-</div>
-
-<div class="box proceso">
-<b>PROCESOS</b>
-<ul>
-<li>Validar roles</li>
-<li>Generar números</li>
-<li>Actualizar estados</li>
-<li>Registro historial</li>
-</ul>
-</div>
-
-<div class="box salida">
-<b>SALIDAS</b>
-<ul>
-<li>Equipos por laboratorio</li>
-<li>Historial de equipos</li>
-<li>Reportes</li>
-<li>Solicitudes de compra</li>
-</ul>
-</div>
-
-</div>
-
-</div>
-
 <!-- ACTIVIDAD -->
 
 <div class="activity">
@@ -362,6 +321,96 @@ border:none;
 
 </div>
 
+<!-- REGISTRO REQUISICIÓN -->
+
+<div class="panel">
+
+<h3>Registro de Requisición</h3>
+
+<form>
+
+<input type="text" placeholder="Número">
+
+<input type="datetime-local">
+
+<select>
+<option>Laboratorio</option>
+<option>Lab 1</option>
+<option>Lab 2</option>
+<option>Lab 3</option>
+</select>
+
+<input type="text" placeholder="Solicitante">
+
+<input type="text" placeholder="Equipo">
+
+<input type="number" placeholder="Cantidad">
+
+<select>
+<option>Prioridad</option>
+<option>Alta</option>
+<option>Media</option>
+<option>Baja</option>
+</select>
+
+<select>
+<option>Estado</option>
+<option>Pendiente</option>
+<option>Aprobada</option>
+<option>Entregado</option>
+</select>
+
+<button type="submit">Registrar</button>
+
+</form>
+
+</div>
+
+<!-- REPORTE DE FALLA -->
+
+<div class="panel">
+
+<h3>Reporte de Falla</h3>
+
+<form>
+
+<textarea rows="6" placeholder="Describe la falla de la computadora..."></textarea>
+
+<button type="submit">Enviar Reporte</button>
+
+</form>
+
+</div>
+
+<!-- REGISTRO DE EQUIPOS -->
+
+<div class="panel">
+
+<h3>Registro de Equipos</h3>
+
+<form>
+
+<input type="text" placeholder="Número de equipo">
+
+<select>
+<option>Tipo de Equipo</option>
+<option>Computadora</option>
+<option>Mouse</option>
+<option>Teclado</option>
+<option>Pantalla</option>
+<option>PC</option>
+</select>
+
+<input type="text" placeholder="Marca">
+
+<input type="text" placeholder="Modelo">
+
+<button type="submit">Registrar Equipo</button>
+
+</form>
+
+</div>
+
 </div>
 </div>
 
@@ -369,6 +418,9 @@ border:none;
 
 </body>
 </html>
+```
+
+
 
 
 
