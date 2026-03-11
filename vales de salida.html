@@ -26,9 +26,8 @@ background:#000;
 color:white;
 height:100vh;
 padding:20px;
+position:relative;
 }
-
-/* LOGO */
 
 .logo-img{
 width:80px;
@@ -69,6 +68,8 @@ color:black;
 position:absolute;
 bottom:20px;
 left:20px;
+color:white;
+text-decoration:none;
 }
 
 /* MAIN */
@@ -230,11 +231,8 @@ border:none;
 
 <body>
 
-<!-- SIDEBAR -->
-
 <div class="sidebar">
 
-<!-- LOGO -->
 <img src="foto1.png" class="logo-img">
 
 <div class="logo">CompuLab Manager</div>
@@ -254,8 +252,6 @@ border:none;
 
 </div>
 
-<!-- MAIN -->
-
 <div class="main">
 
 <div class="topbar">
@@ -274,10 +270,9 @@ border:none;
 <button class="new-btn">+ Nuevo Vale</button>
 </div>
 
-<!-- FILTERS -->
-
 <div class="filters">
 <input type="text" placeholder="Buscar por número, laboratorio, responsable...">
+
 <select>
 <option>Todos los estados</option>
 <option>Entregado</option>
@@ -290,14 +285,13 @@ border:none;
 <button>Filtros</button>
 </div>
 
-<!-- TABLE -->
-
 <table>
 
 <tr>
 <th>NÚMERO</th>
 <th>FECHA/HORA</th>
 <th>LABORATORIO</th>
+<th>MATERIA</th>
 <th>RESPONSABLE</th>
 <th>EQUIPO</th>
 <th>SOLICITADA</th>
@@ -310,7 +304,8 @@ border:none;
 <tr>
 <td style="color:#2f6df6;">VAL-2026-089</td>
 <td>09/03/2026 13:15</td>
-<td>Lab. Física</td>
+<td>Laboratorio 1</td>
+<td>Programación</td>
 <td>Dra. María García</td>
 <td>Multímetro Digital</td>
 <td>3</td>
@@ -323,7 +318,8 @@ border:none;
 <tr>
 <td style="color:#2f6df6;">VAL-2026-088</td>
 <td>08/03/2026 10:30</td>
-<td>Lab. Química</td>
+<td>Laboratorio 2</td>
+<td>Programación</td>
 <td>Dr. Juan Pérez</td>
 <td>Pipeta Automática</td>
 <td>5</td>
@@ -336,7 +332,8 @@ border:none;
 <tr>
 <td style="color:#2f6df6;">VAL-2026-087</td>
 <td>08/03/2026 09:15</td>
-<td>Lab. Biología</td>
+<td>Laboratorio 3</td>
+<td>Programación</td>
 <td>Dr. Carlos López</td>
 <td>Microscopio</td>
 <td>2</td>
@@ -349,7 +346,8 @@ border:none;
 <tr>
 <td style="color:#2f6df6;">VAL-2026-086</td>
 <td>07/03/2026 14:45</td>
-<td>Lab. Computación</td>
+<td>Laboratorio 1</td>
+<td>Programación</td>
 <td>Ing. Ana Martínez</td>
 <td>Mouse inalámbrico</td>
 <td>10</td>
@@ -362,7 +360,8 @@ border:none;
 <tr>
 <td style="color:#2f6df6;">VAL-2026-085</td>
 <td>06/03/2026 11:00</td>
-<td>Lab. Química</td>
+<td>Laboratorio 2</td>
+<td>Programación</td>
 <td>Dr. Pedro Ruiz</td>
 <td>Termómetro Digital</td>
 <td>4</td>
@@ -387,4 +386,3 @@ border:none;
 
 </body>
 </html>
-
