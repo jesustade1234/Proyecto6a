@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
-<title>Vales de Salida - CompuLab</title>
+<title>CompuLab Manager - Dashboard</title>
 
 <style>
 
@@ -13,32 +14,25 @@ box-sizing:border-box;
 font-family:Arial, Helvetica, sans-serif;
 }
 
-/* FONDO ANIMADO */
-
 body{
-display:flex;
-min-height:100vh;
-background:linear-gradient(270deg,#0f2027,#203a43,#2c5364);
-background-size:600% 600%;
-animation:fondo 12s ease infinite;
+background:#f4f6f9;
 }
 
-@keyframes fondo{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+/* CONTENEDOR */
+.container{
+display:flex;
+height:100vh;
 }
 
 /* SIDEBAR */
 
 .sidebar{
-width:240px;
-background:#000;
+width:230px;
+background:#0b0b0b;
 color:white;
-height:100vh;
 padding:20px;
-position:relative;
-box-shadow:4px 0px 20px rgba(0,0,0,0.5);
+display:flex;
+flex-direction:column;
 }
 
 .logo-img{
@@ -47,341 +41,334 @@ display:block;
 margin:0 auto 10px auto;
 }
 
-.logo{
-color:#ffc400;
-font-weight:bold;
-font-size:18px;
+.sidebar h2{
+color:#facc15;
+text-align:center;
 margin-bottom:5px;
-text-align:center;
 }
 
-.subtitle{
-font-size:12px;
-margin-bottom:30px;
+.sidebar small{
+display:block;
 text-align:center;
+margin-bottom:25px;
+color:#aaa;
 }
 
-.menu a{
+.sidebar ul{
+list-style:none;
+flex:1;
+}
+
+.sidebar ul li a{
 display:block;
 padding:12px;
-margin-bottom:8px;
 text-decoration:none;
 color:white;
-border-radius:8px;
-transition:0.3s;
 }
 
-.menu a:hover,
-.menu .active{
-background:#ffc400;
+.sidebar ul li a:hover{
+background:#1f1f1f;
+}
+
+.active a{
+background:#facc15;
 color:black;
-transform:translateX(5px);
+font-weight:bold;
+border-radius:6px;
 }
 
 .logout{
-position:absolute;
-bottom:20px;
-left:20px;
+background:#1f1f1f;
 color:white;
-text-decoration:none;
+border:none;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
 }
 
 /* MAIN */
 
 .main{
 flex:1;
+display:flex;
+flex-direction:column;
 }
 
 /* TOPBAR */
 
 .topbar{
-background:black;
-padding:15px 25px;
+background:#0b0b0b;
+padding:12px 20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-border-bottom:4px solid #ffc400;
+border-bottom:3px solid #facc15;
 }
 
-.search{
-width:400px;
-padding:10px;
-border-radius:20px;
-border:2px solid #ffc400;
-outline:none;
+.topbar input{
+width:40%;
+padding:8px;
+border-radius:6px;
+border:none;
 }
 
-/* CONTENT */
+.user{
+color:white;
+font-size:14px;
+}
+
+/* CONTENIDO */
 
 .content{
-padding:30px;
+padding:25px;
 }
 
-/* TITULOS */
-
-.title{
-font-size:22px;
-font-weight:bold;
+.content h1{
+font-size:24px;
 margin-bottom:5px;
-color:white;
 }
 
-.subtitle2{
-color:#ddd;
-font-size:13px;
-margin-bottom:20px;
-}
-
-/* ACTION BAR */
-
-.action-bar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
-}
-
-.new-btn{
-background:#2f6df6;
-color:white;
-border:none;
-padding:10px 16px;
-border-radius:8px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.new-btn:hover{
-transform:scale(1.05);
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-}
-
-/* FILTERS */
-
-.filters{
-background:white;
-padding:15px;
-border-radius:10px;
-display:flex;
-gap:10px;
-margin-bottom:20px;
-box-shadow:0 5px 20px rgba(0,0,0,0.2);
-}
-
-.filters input,
-.filters select{
-padding:8px;
-border-radius:8px;
-border:1px solid #ccc;
-}
-
-/* TABLA */
-
-table{
-width:100%;
-border-collapse:collapse;
-background:white;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.25);
-animation:tabla 0.8s ease;
-}
-
-@keyframes tabla{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-th{
-background:#f2f2f2;
-padding:12px;
-font-size:13px;
-text-align:left;
+.content p{
 color:#666;
+margin-bottom:20px;
 }
 
-td{
-padding:12px;
-border-top:1px solid #eee;
-font-size:13px;
-transition:0.2s;
+/* TARJETAS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-bottom:25px;
 }
 
-tr:hover td{
-background:#f8f8f8;
-}
-
-/* STATUS */
-
-.status{
-padding:4px 9px;
-border-radius:10px;
-font-size:12px;
-font-weight:bold;
-}
-
-.entregado{
-background:#d4edda;
-color:#155724;
-}
-
-.pendiente{
-background:#fff3cd;
-color:#856404;
-}
-
-.parcial{
-background:#f8d7da;
-color:#721c24;
-}
-
-/* PAGINACION */
-
-.pagination{
-display:flex;
-justify-content:flex-end;
-gap:6px;
-margin-top:15px;
-}
-
-.page{
-padding:6px 12px;
-border:1px solid #ccc;
-border-radius:5px;
-cursor:pointer;
+.card{
 background:white;
-transition:0.2s;
+padding:20px;
+border-radius:10px;
+border:2px solid #ddd;
 }
 
-.page:hover{
-background:#ffc400;
+.card h3{
+font-size:28px;
+margin-bottom:5px;
 }
 
-.active-page{
-background:#2f6df6;
+.card span{
+font-size:13px;
+color:#555;
+}
+
+.yellow{border-color:#facc15;}
+.red{border-color:#ef4444;}
+.black{border-color:#000;}
+.gray{border-color:#999;}
+
+/* FLUJO */
+
+.flow{
+border:2px solid #facc15;
+padding:20px;
+border-radius:10px;
+margin-bottom:25px;
+}
+
+.flow h3{
+margin-bottom:15px;
+}
+
+.flow-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.box{
+padding:15px;
+border-radius:8px;
 color:white;
+}
+
+.entrada{background:#facc15;color:black;}
+.proceso{background:#ef4444;}
+.salida{background:black;}
+
+/* ACTIVIDAD */
+
+.activity{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.panel{
+background:white;
+border-radius:10px;
+padding:20px;
+border:1px solid #ddd;
+}
+
+.panel h3{
+margin-bottom:10px;
+}
+
+.item{
+padding:10px;
+border-bottom:1px solid #eee;
+font-size:14px;
+}
+
+.item:last-child{
 border:none;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="sidebar">
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
 
 <img src="foto1.png" class="logo-img">
 
-<div class="logo">CompuLab Manager</div>
-<div class="subtitle">Gestión de Cómputo</div>
+<h2>CompuLab Manager</h2>
+<small>Gestión de Cómputo</small>
 
-<div class="menu">
-<a href="dashboard.html">Dashboard</a>
-<a href="requisiciones.html">Requisiciones</a>
-<a class="active" href="vales de salida.html">Vales de Salida</a>
-<a href="reporte de fallas.html">Reportes de Falla</a>
-<a href="mantenimiento.html">Mantenimientos</a>
-<a href="equipos.html">Equipos</a>
-<a href="usuarios.html">Usuarios</a>
-</div>
+<ul>
+<li class="active"><a href="dashboard.html">Dashboard</a></li>
+<li><a href="requisiciones.html">Requisiciones</a></li>
+<li><a href="vales de salida.html">Vales de Salida</a></li>
+<li><a href="reporte de fallas.html">Reportes de Falla</a></li>
+<li><a href="mantenimiento.html">Mantenimientos</a></li>
+<li><a href="equipos.html">Equipos</a></li>
+<li><a href="usuarios.html">Usuarios</a></li>
+</ul>
 
-<a href="#" class="logout">Cerrar Sesión</a>
+<a href="index.html" class="logout">Cerrar Sesión</a>
 
-</div>
+</aside>
+
+<!-- MAIN -->
 
 <div class="main">
 
 <div class="topbar">
-<input class="search" placeholder="Buscar equipos, requisiciones...">
-<div style="color:white;">Admin Usuario</div>
+<input type="text" placeholder="Buscar equipos, requisiciones...">
+<div class="user">Admin Usuario</div>
 </div>
 
 <div class="content">
 
-<div class="action-bar">
-<div>
-<div class="title">Vales de Salida</div>
-<div class="subtitle2">Gestiona la entrega de equipos</div>
+<h1>Dashboard</h1>
+<p>Vista general de 3 Laboratorios de Cómputo</p>
+
+<!-- TARJETAS -->
+
+<div class="cards">
+
+<div class="card yellow">
+<h3>142</h3>
+<span>Equipos Activos</span>
 </div>
 
-<button class="new-btn">+ Nuevo Vale</button>
+<div class="card red">
+<h3>12</h3>
+<span>En Mantenimiento</span>
 </div>
 
-<div class="filters">
-<input type="text" placeholder="Buscar...">
-
-<select>
-<option>Todos los estados</option>
-<option>Entregado</option>
-<option>Pendiente</option>
-<option>Parcial</option>
-</select>
-
-<input type="date">
-
-<button>Filtros</button>
+<div class="card black">
+<h3>6</h3>
+<span>En Reparación</span>
 </div>
 
-<table>
-
-<tr>
-<th>NÚMERO</th>
-<th>LABORATORIO</th>
-<th>MATERIA</th>
-<th>EQUIPO</th>
-<th>ESTADO</th>
-</tr>
-
-<tr>
-<td>VAL-089</td>
-<td>Laboratorio 1</td>
-<td>Programación</td>
-<td>Mouse</td>
-<td><span class="status entregado">Entregado</span></td>
-</tr>
-
-<tr>
-<td>VAL-088</td>
-<td>Laboratorio 2</td>
-<td>Programación</td>
-<td>Pantalla</td>
-<td><span class="status entregado">Entregado</span></td>
-</tr>
-
-<tr>
-<td>VAL-087</td>
-<td>Laboratorio 3</td>
-<td>Programación</td>
-<td>Teclado</td>
-<td><span class="status pendiente">Pendiente</span></td>
-</tr>
-
-<tr>
-<td>VAL-086</td>
-<td>Laboratorio 1</td>
-<td>Programación</td>
-<td>PC</td>
-<td><span class="status parcial">Parcial</span></td>
-</tr>
-
-</table>
-
-<div class="pagination">
-<div class="page">1</div>
-<div class="page active-page">2</div>
-<div class="page">3</div>
+<div class="card gray">
+<h3>28</h3>
+<span>Requisiciones</span>
 </div>
 
 </div>
+
+<!-- FLUJO -->
+
+<div class="flow">
+
+<h3>Flujo del Sistema</h3>
+
+<div class="flow-grid">
+
+<div class="box entrada">
+<b>ENTRADAS</b>
+<ul>
+<li>Requisiciones</li>
+<li>Vales de salida</li>
+<li>Reportes de falla</li>
+<li>Registro de equipos</li>
+</ul>
+</div>
+
+<div class="box proceso">
+<b>PROCESOS</b>
+<ul>
+<li>Validar roles</li>
+<li>Generar números</li>
+<li>Actualizar estados</li>
+<li>Registro historial</li>
+</ul>
+</div>
+
+<div class="box salida">
+<b>SALIDAS</b>
+<ul>
+<li>Equipos por laboratorio</li>
+<li>Historial de equipos</li>
+<li>Reportes</li>
+<li>Solicitudes de compra</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<!-- ACTIVIDAD -->
+
+<div class="activity">
+
+<div class="panel">
+
+<h3>Equipos por Laboratorio</h3>
+
+<div class="item">Lab 1 : 50 equipos</div>
+<div class="item">Lab 2 : 45 equipos</div>
+<div class="item">Lab 3 : 42 equipos</div>
+
+</div>
+
+<div class="panel">
+
+<h3>Actividad Reciente</h3>
+
+<div class="item">REQ-2026-142 — Aprobada</div>
+<div class="item">VAL-2026-089 — Entregado</div>
+<div class="item">REP-2026-056 — Pendiente</div>
+<div class="item">MNT-2026-034 — En proceso</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 
 </body>
 </html>
+
 
 
