@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,20 +14,9 @@ box-sizing:border-box;
 font-family:Arial, Helvetica, sans-serif;
 }
 
-/* FONDO ANIMADO */
-
 body{
 display:flex;
-min-height:100vh;
-background:linear-gradient(270deg,#0f2027,#203a43,#2c5364);
-background-size:600% 600%;
-animation:fondo 12s ease infinite;
-}
-
-@keyframes fondo{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+background:#f4f4f4;
 }
 
 /* SIDEBAR */
@@ -37,9 +27,9 @@ background:#000;
 color:white;
 height:100vh;
 padding:20px;
-position:relative;
-box-shadow:4px 0px 20px rgba(0,0,0,0.5);
 }
+
+/* LOGO */
 
 .logo-img{
 width:80px;
@@ -68,22 +58,18 @@ margin-bottom:8px;
 text-decoration:none;
 color:white;
 border-radius:8px;
-transition:0.3s;
 }
 
 .menu a:hover,
 .menu .active{
 background:#ffc400;
 color:black;
-transform:translateX(5px);
 }
 
 .logout{
 position:absolute;
 bottom:20px;
 left:20px;
-color:white;
-text-decoration:none;
 }
 
 /* MAIN */
@@ -108,26 +94,22 @@ width:400px;
 padding:10px;
 border-radius:20px;
 border:2px solid #ffc400;
-outline:none;
 }
 
 /* CONTENT */
 
 .content{
-padding:30px;
+padding:25px;
 }
 
-/* TITULOS */
-
 .title{
-font-size:22px;
+font-size:20px;
 font-weight:bold;
 margin-bottom:5px;
-color:white;
 }
 
 .subtitle2{
-color:#ddd;
+color:#777;
 font-size:13px;
 margin-bottom:20px;
 }
@@ -138,34 +120,27 @@ margin-bottom:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:20px;
+margin-bottom:15px;
 }
 
 .new-btn{
 background:#2f6df6;
 color:white;
 border:none;
-padding:10px 16px;
+padding:10px 15px;
 border-radius:8px;
 cursor:pointer;
-transition:0.3s;
-}
-
-.new-btn:hover{
-transform:scale(1.05);
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
 /* FILTERS */
 
 .filters{
 background:white;
-padding:15px;
+padding:12px;
 border-radius:10px;
 display:flex;
 gap:10px;
 margin-bottom:20px;
-box-shadow:0 5px 20px rgba(0,0,0,0.2);
 }
 
 .filters input,
@@ -175,7 +150,7 @@ border-radius:8px;
 border:1px solid #ccc;
 }
 
-/* TABLA */
+/* TABLE */
 
 table{
 width:100%;
@@ -183,47 +158,28 @@ border-collapse:collapse;
 background:white;
 border-radius:10px;
 overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.25);
-animation:tabla 0.8s ease;
-}
-
-@keyframes tabla{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
 }
 
 th{
 background:#f2f2f2;
-padding:12px;
+padding:10px;
 font-size:13px;
 text-align:left;
 color:#666;
 }
 
 td{
-padding:12px;
+padding:10px;
 border-top:1px solid #eee;
 font-size:13px;
-transition:0.2s;
-}
-
-tr:hover td{
-background:#f8f8f8;
 }
 
 /* STATUS */
 
 .status{
-padding:4px 9px;
+padding:3px 8px;
 border-radius:10px;
 font-size:12px;
-font-weight:bold;
 }
 
 .entregado{
@@ -241,26 +197,27 @@ background:#f8d7da;
 color:#721c24;
 }
 
-/* PAGINACION */
+/* ACTIONS */
+
+.actions span{
+margin-right:8px;
+cursor:pointer;
+}
+
+/* PAGINATION */
 
 .pagination{
 display:flex;
 justify-content:flex-end;
-gap:6px;
+gap:5px;
 margin-top:15px;
 }
 
 .page{
-padding:6px 12px;
+padding:5px 10px;
 border:1px solid #ccc;
 border-radius:5px;
 cursor:pointer;
-background:white;
-transition:0.2s;
-}
-
-.page:hover{
-background:#ffc400;
 }
 
 .active-page{
@@ -274,26 +231,31 @@ border:none;
 
 <body>
 
+<!-- SIDEBAR -->
+
 <div class="sidebar">
 
+<!-- LOGO -->
 <img src="foto1.png" class="logo-img">
 
 <div class="logo">CompuLab Manager</div>
 <div class="subtitle">Gestión de Cómputo</div>
 
 <div class="menu">
-<a href="#">Dashboard</a>
-<a href="#">Requisiciones</a>
-<a class="active" href="#">Vales de Salida</a>
-<a href="#">Reportes de Falla</a>
-<a href="#">Mantenimientos</a>
-<a href="#">Equipos</a>
-<a href="#">Usuarios</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="requisiciones.html">Requisiciones</a>
+<a class="active" href="vales de salida.html">Vales de Salida</a>
+<a href="reporte de fallas.html">Reportes de Falla</a>
+<a href="mantenimiento.html">Mantenimientos</a>
+<a href="equipos.html">Equipos</a>
+<a href="usuarios.html">Usuarios</a>
 </div>
 
-<a href="#" class="logout">Cerrar Sesión</a>
+<a href="index.html" class="logout">Cerrar Sesión</a>
 
 </div>
+
+<!-- MAIN -->
 
 <div class="main">
 
@@ -307,15 +269,16 @@ border:none;
 <div class="action-bar">
 <div>
 <div class="title">Vales de Salida</div>
-<div class="subtitle2">Gestiona la entrega de equipos</div>
+<div class="subtitle2">Gestiona la entrega de equipos a los laboratorios</div>
 </div>
 
 <button class="new-btn">+ Nuevo Vale</button>
 </div>
 
-<div class="filters">
-<input type="text" placeholder="Buscar...">
+<!-- FILTERS -->
 
+<div class="filters">
+<input type="text" placeholder="Buscar por número, laboratorio, responsable...">
 <select>
 <option>Todos los estados</option>
 <option>Entregado</option>
@@ -328,58 +291,101 @@ border:none;
 <button>Filtros</button>
 </div>
 
+<!-- TABLE -->
+
 <table>
 
 <tr>
 <th>NÚMERO</th>
+<th>FECHA/HORA</th>
 <th>LABORATORIO</th>
-<th>MATERIA</th>
+<th>RESPONSABLE</th>
 <th>EQUIPO</th>
+<th>SOLICITADA</th>
+<th>ENTREGADA</th>
+<th>ENTREGÓ</th>
 <th>ESTADO</th>
+<th>ACCIONES</th>
 </tr>
 
 <tr>
-<td>VAL-089</td>
-<td>Laboratorio 1</td>
-<td>Programación</td>
-<td>Mouse</td>
+<td style="color:#2f6df6;">VAL-2026-089</td>
+<td>09/03/2026 13:15</td>
+<td>Lab. Física</td>
+<td>Dra. María García</td>
+<td>Multímetro Digital</td>
+<td>3</td>
+<td>3</td>
+<td>Carlos Almacén</td>
 <td><span class="status entregado">Entregado</span></td>
+<td class="actions">👁️ ✏️ 🗑️</td>
 </tr>
 
 <tr>
-<td>VAL-088</td>
-<td>Laboratorio 2</td>
-<td>Programación</td>
-<td>Pantalla</td>
+<td style="color:#2f6df6;">VAL-2026-088</td>
+<td>08/03/2026 10:30</td>
+<td>Lab. Química</td>
+<td>Dr. Juan Pérez</td>
+<td>Pipeta Automática</td>
+<td>5</td>
+<td>5</td>
+<td>Ana Almacén</td>
 <td><span class="status entregado">Entregado</span></td>
+<td class="actions">👁️ ✏️ 🗑️</td>
 </tr>
 
 <tr>
-<td>VAL-087</td>
-<td>Laboratorio 3</td>
-<td>Programación</td>
-<td>Teclado</td>
+<td style="color:#2f6df6;">VAL-2026-087</td>
+<td>08/03/2026 09:15</td>
+<td>Lab. Biología</td>
+<td>Dr. Carlos López</td>
+<td>Microscopio</td>
+<td>2</td>
+<td>0</td>
+<td>-</td>
 <td><span class="status pendiente">Pendiente</span></td>
+<td class="actions">👁️ ✏️ 🗑️</td>
 </tr>
 
 <tr>
-<td>VAL-086</td>
-<td>Laboratorio 1</td>
-<td>Programación</td>
-<td>PC</td>
+<td style="color:#2f6df6;">VAL-2026-086</td>
+<td>07/03/2026 14:45</td>
+<td>Lab. Computación</td>
+<td>Ing. Ana Martínez</td>
+<td>Mouse inalámbrico</td>
+<td>10</td>
+<td>8</td>
+<td>Carlos Almacén</td>
 <td><span class="status parcial">Parcial</span></td>
+<td class="actions">👁️ ✏️ 🗑️</td>
+</tr>
+
+<tr>
+<td style="color:#2f6df6;">VAL-2026-085</td>
+<td>06/03/2026 11:00</td>
+<td>Lab. Química</td>
+<td>Dr. Pedro Ruiz</td>
+<td>Termómetro Digital</td>
+<td>4</td>
+<td>4</td>
+<td>Ana Almacén</td>
+<td><span class="status entregado">Entregado</span></td>
+<td class="actions">👁️ ✏️ 🗑️</td>
 </tr>
 
 </table>
 
 <div class="pagination">
-<div class="page">1</div>
-<div class="page active-page">2</div>
+<div class="page">Anterior</div>
+<div class="page active-page">1</div>
+<div class="page">2</div>
 <div class="page">3</div>
+<div class="page">Siguiente</div>
 </div>
 
 </div>
 </div>
 
 </body>
-</html>
+</html> 
+
