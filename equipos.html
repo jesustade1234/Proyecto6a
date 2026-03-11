@@ -1,450 +1,336 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<title>CompuLab Manager - Equipos</title>
+    <meta charset="UTF-8">
+    <title>CompuLab Manager - Equipos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-<style>
+        body {
+            background: #f4f6f9;
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
+        /* CONTENEDOR GENERAL */
+        .container {
+            display: flex;
+            height: 100vh;
+        }
 
-/* FONDO ANIMADO */
+        /* SIDEBAR */
+        .sidebar {
+            width: 230px;
+            background: #0b0b0b;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
 
-body{
-display:flex;
-min-height:100vh;
-background:linear-gradient(270deg,#0f2027,#203a43,#2c5364);
-background-size:600% 600%;
-animation:fondo 12s ease infinite;
-}
+        /* LOGO */
+        .logo-img {
+            width: 80px;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
 
-@keyframes fondo{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
+        .sidebar h2 {
+            color: #facc15;
+            margin-bottom: 5px;
+            text-align: center;
+        }
 
-/* CONTENEDOR */
+        .sidebar small {
+            color: #aaa;
+            margin-bottom: 25px;
+            display: block;
+            text-align: center;
+        }
 
-.container{
-display:flex;
-width:100%;
-}
+        .sidebar ul {
+            list-style: none;
+            flex: 1;
+        }
 
-/* SIDEBAR */
+        .sidebar ul li {
+            border-radius: 6px;
+        }
 
-.sidebar{
-width:230px;
-background:#000;
-color:white;
-padding:20px;
-display:flex;
-flex-direction:column;
-box-shadow:4px 0px 20px rgba(0,0,0,0.5);
-}
+        .sidebar ul li a {
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+            color: white;
+        }
 
-.logo-img{
-width:80px;
-display:block;
-margin:0 auto 10px auto;
-}
+        .sidebar ul li a:hover {
+            background: #1f1f1f;
+        }
 
-.sidebar h2{
-color:#ffc400;
-margin-bottom:5px;
-text-align:center;
-}
+        .active a {
+            background: #facc15;
+            color: black;
+            font-weight: bold;
+            border-radius: 6px;
+        }
 
-.sidebar small{
-color:#aaa;
-margin-bottom:25px;
-display:block;
-text-align:center;
-}
+        .logout {
+            background: #1f1f1f;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
 
-.sidebar ul{
-list-style:none;
-flex:1;
-}
+        /* MAIN */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-.sidebar ul li a{
-display:block;
-padding:12px;
-text-decoration:none;
-color:white;
-border-radius:8px;
-transition:0.3s;
-}
+        /* TOPBAR */
+        .topbar {
+            background: #0b0b0b;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #facc15;
+        }
 
-.sidebar ul li a:hover{
-background:#ffc400;
-color:black;
-transform:translateX(5px);
-}
+        .topbar input {
+            width: 40%;
+            padding: 8px;
+            border-radius: 6px;
+            border: none;
+        }
 
-.active a{
-background:#ffc400;
-color:black;
-font-weight:bold;
-}
+        .user {
+            color: white;
+            font-size: 14px;
+        }
 
-.logout{
-background:#1f1f1f;
-color:white;
-border:none;
-padding:10px;
-border-radius:6px;
-cursor:pointer;
-text-align:center;
-text-decoration:none;
-}
+        /* CONTENIDO */
+        .content {
+            padding: 25px;
+        }
 
-/* MAIN */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
 
-.main{
-flex:1;
-display:flex;
-flex-direction:column;
-}
+        .header h1 {
+            font-size: 22px;
+        }
 
-/* TOPBAR */
+        .btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
 
-.topbar{
-background:black;
-padding:15px 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:4px solid #ffc400;
-}
+        /* FILTROS */
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
 
-.topbar input{
-width:40%;
-padding:10px;
-border-radius:20px;
-border:2px solid #ffc400;
-outline:none;
-}
+        .filters input,
+        .filters select {
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
 
-.user{
-color:white;
-font-size:14px;
-}
+        /* TABLA */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
 
-/* CONTENIDO */
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
 
-.content{
-padding:30px;
-}
+        th {
+            background: #f3f4f6;
+            font-size: 13px;
+            color: #555;
+        }
 
-.header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
-}
+        /* ESTADOS */
+        .status {
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
 
-.header h1{
-font-size:22px;
-color:white;
-}
+        .operativo {
+            background: #bbf7d0;
+        }
 
-.btn{
-background:#2f6df6;
-color:white;
-border:none;
-padding:10px 16px;
-border-radius:8px;
-cursor:pointer;
-transition:0.3s;
-}
+        .mantenimiento {
+            background: #fde68a;
+        }
 
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-}
+        .falla {
+            background: #fecaca;
+        }
 
-/* FILTROS */
+        /* ACCIONES */
+        .actions span {
+            margin-right: 8px;
+            cursor: pointer;
+        }
 
-.filters{
-display:flex;
-gap:10px;
-margin-bottom:20px;
-background:white;
-padding:15px;
-border-radius:10px;
-box-shadow:0 5px 20px rgba(0,0,0,0.2);
-}
+        /* PAGINACIÓN */
+        .pagination {
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 5px;
+        }
 
-.filters input,
-.filters select{
-padding:8px;
-border-radius:8px;
-border:1px solid #ccc;
-}
+        .pagination button {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
 
-/* TABLA */
-
-table{
-width:100%;
-border-collapse:collapse;
-background:white;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.25);
-animation:tabla 0.8s ease;
-}
-
-@keyframes tabla{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-th,td{
-padding:12px;
-text-align:left;
-border-bottom:1px solid #eee;
-font-size:14px;
-}
-
-th{
-background:#f3f4f6;
-font-size:13px;
-color:#555;
-}
-
-tr:hover td{
-background:#f8f8f8;
-}
-
-/* ESTADOS */
-
-.status{
-padding:4px 9px;
-border-radius:10px;
-font-size:12px;
-font-weight:bold;
-}
-
-.operativo{
-background:#bbf7d0;
-color:#065f46;
-}
-
-.mantenimiento{
-background:#fde68a;
-color:#92400e;
-}
-
-.falla{
-background:#fecaca;
-color:#7f1d1d;
-}
-
-/* ACCIONES */
-
-.actions span{
-margin-right:8px;
-cursor:pointer;
-}
-
-/* PAGINACIÓN */
-
-.pagination{
-margin-top:15px;
-display:flex;
-justify-content:flex-end;
-gap:6px;
-}
-
-.pagination button{
-padding:6px 12px;
-border:1px solid #ccc;
-background:white;
-cursor:pointer;
-border-radius:5px;
-transition:0.2s;
-}
-
-.pagination button:hover{
-background:#ffc400;
-}
-
-.pagination .active{
-background:#2f6df6;
-color:white;
-border:none;
-}
-
-</style>
+        .pagination .active {
+            background: #2563eb;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
-
-<div class="container">
-
-<aside class="sidebar">
-
-<img src="foto1.png" class="logo-img">
-
-<h2>CompuLab Manager</h2>
-<small>Gestión de Cómputo</small>
-
-<ul>
-<li><a href="dashboard.html">Dashboard</a></li>
-<li><a href="requisiciones.html">Requisiciones</a></li>
-<li><a href="vales de salida.html">Vales de Salida</a></li>
-<li><a href="reporte de fallas.html">Reportes de Falla</a></li>
-<li><a href="mantenimiento.html">Mantenimientos</a></li>
-<li class="active"><a href="equipos.html">Equipos</a></li>
-<li><a href="usuarios.html">Usuarios</a></li>
-</ul>
-
-<a href="index.html" class="logout">Cerrar Sesión</a>
-
-</aside>
-
-<div class="main">
-
-<div class="topbar">
-<input type="text" placeholder="Buscar equipos, requisiciones...">
-<div class="user">Admin Usuario</div>
-</div>
-
-<div class="content">
-
-<div class="header">
-<h1>Equipos</h1>
-<button class="btn">+ Nuevo Equipo</button>
-</div>
-
-<div class="filters">
-<input type="text" placeholder="Buscar por código, nombre, marca...">
-
-<select>
-<option>Todos los estados</option>
-<option>Operativo</option>
-<option>Mantenimiento</option>
-<option>Falla</option>
-</select>
-
-<select>
-<option>Todos los laboratorios</option>
-<option>Laboratorio 1</option>
-<option>Laboratorio 2</option>
-<option>Laboratorio 3</option>
-</select>
-
-<button>Filtros</button>
-</div>
-
-<table>
-
-<thead>
-<tr>
-<th>CÓDIGO</th>
-<th>EQUIPO</th>
-<th>CATEGORÍA</th>
-<th>LABORATORIO</th>
-<th>MARCA/MODELO</th>
-<th>ESTADO</th>
-<th>RESPONSABLE</th>
-<th>VALOR</th>
-<th>ACCIONES</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr>
-<td>PC-025</td>
-<td>Computadora</td>
-<td>Cómputo</td>
-<td>Laboratorio 1</td>
-<td>Dell Optiplex</td>
-<td><span class="status operativo">Operativo</span></td>
-<td>Ing. Ana Martínez</td>
-<td>$1,800</td>
-<td class="actions">👁 ✏ 🗑</td>
-</tr>
-
-<tr>
-<td>TEC-011</td>
-<td>Teclado</td>
-<td>Periférico</td>
-<td>Laboratorio 2</td>
-<td>Logitech K120</td>
-<td><span class="status operativo">Operativo</span></td>
-<td>Ing. Luis Torres</td>
-<td>$25</td>
-<td class="actions">👁 ✏ 🗑</td>
-</tr>
-
-<tr>
-<td>MOU-014</td>
-<td>Mouse</td>
-<td>Periférico</td>
-<td>Laboratorio 1</td>
-<td>HP Optical</td>
-<td><span class="status mantenimiento">Mantenimiento</span></td>
-<td>Ing. Ana Martínez</td>
-<td>$15</td>
-<td class="actions">👁 ✏ 🗑</td>
-</tr>
-
-<tr>
-<td>MON-007</td>
-<td>Pantalla</td>
-<td>Visual</td>
-<td>Laboratorio 3</td>
-<td>Samsung 24"</td>
-<td><span class="status falla">Falla</span></td>
-<td>Ing. Pedro Ruiz</td>
-<td>$180</td>
-<td class="actions">👁 ✏ 🗑</td>
-</tr>
-
-<tr>
-<td>CPU-018</td>
-<td>CPU</td>
-<td>Cómputo</td>
-<td>Laboratorio 2</td>
-<td>HP EliteDesk</td>
-<td><span class="status operativo">Operativo</span></td>
-<td>Ing. Carlos López</td>
-<td>$950</td>
-<td class="actions">👁 ✏ 🗑</td>
-</tr>
-
-</tbody>
-
-</table>
-
-<div class="pagination">
-<button>Anterior</button>
-<button class="active">1</button>
-<button>2</button>
-<button>3</button>
-<button>Siguiente</button>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+    <div class="container"> <!-- SIDEBAR -->
+        <aside class="sidebar"> <!-- LOGO --> <img src="foto1.png" class="logo-img">
+            <h2>CompuLab Manager</h2> <small>Gestión de Cómputo</small>
+            <ul>
+                <li><a href="dashboard.html"> Dashboard</a></li>
+                <li><a href="requisiciones.html"> Requisiciones</a></li>
+                <li><a href="vales de salida.html"> Vales de Salida</a></li>
+                <li><a href="reporte de fallas.html"> Reportes de Falla</a></li>
+                <li><a href="mantenimiento.html"> Mantenimientos</a></li>
+                <li class="active"><a href="equipos.html"> Equipos</a></li>
+                <li><a href="usuarios.html"> Usuarios</a></li>
+            </ul> <a href="index.html" class="logout">Cerrar Sesión</a>
+        </aside> <!-- MAIN -->
+        <div class="main">
+            <div class="topbar"> <input type="text" placeholder="Buscar equipos, requisiciones...">
+                <div class="user">Admin Usuario</div>
+            </div>
+            <div class="content">
+                <div class="header">
+                    <h1>Equipos</h1> <button class="btn">+ Nuevo Equipo</button>
+                </div>
+                <div class="filters"> <input type="text" placeholder="Buscar por código, nombre, marca..."> <select>
+                        <option>Todos los estados</option>
+                    </select> <select>
+                        <option>Todos los laboratorios</option>
+                    </select> <button>Filtros</button> </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CÓDIGO</th>
+                            <th>EQUIPO</th>
+                            <th>CATEGORÍA</th>
+                            <th>LABORATORIO</th>
+                            <th>MARCA/MODELO</th>
+                            <th>ESTADO</th>
+                            <th>RESPONSABLE</th>
+                            <th>VALOR</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MIC-015</td>
+                            <td>Microscopio Óptico Binocular</td>
+                            <td>Óptica</td>
+                            <td>Lab. Biología</td>
+                            <td>Olympus CX23</td>
+                            <td><span class="status operativo">Operativo</span></td>
+                            <td>Dr. Carlos López</td>
+                            <td>$2,500</td>
+                            <td class="actions">👁 ✏ 🗑</td>
+                        </tr>
+                        <tr>
+                            <td>BAL-008</td>
+                            <td>Balanza Analítica Digital</td>
+                            <td>Medición</td>
+                            <td>Lab. Química</td>
+                            <td>Mettler Toledo</td>
+                            <td><span class="status operativo">Operativo</span></td>
+                            <td>Dr. Juan Pérez</td>
+                            <td>$3,200</td>
+                            <td class="actions">👁 ✏ 🗑</td>
+                        </tr>
+                        <tr>
+                            <td>CEN-012</td>
+                            <td>Centrífuga de Laboratorio</td>
+                            <td>Separación</td>
+                            <td>Lab. Química</td>
+                            <td>Eppendorf</td>
+                            <td><span class="status mantenimiento">Mantenimiento</span></td>
+                            <td>Dr. Pedro Ruiz</td>
+                            <td>$4,800</td>
+                            <td class="actions">👁 ✏ 🗑</td>
+                        </tr>
+                        <tr>
+                            <td>OSC-005</td>
+                            <td>Osciloscopio Digital</td>
+                            <td>Electrónica</td>
+                            <td>Lab. Física</td>
+                            <td>Tektronix</td>
+                            <td><span class="status falla">Falla</span></td>
+                            <td>Dra. María García</td>
+                            <td>$5,500</td>
+                            <td class="actions">👁 ✏ 🗑</td>
+                        </tr>
+                        <tr>
+                            <td>PC-025</td>
+                            <td>Computadora de Escritorio</td>
+                            <td>Cómputo</td>
+                            <td>Lab. Computación</td>
+                            <td>Dell Optiplex</td>
+                            <td><span class="status operativo">Operativo</span></td>
+                            <td>Ing. Ana Martínez</td>
+                            <td>$1,800</td>
+                            <td class="actions">👁 ✏ 🗑</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pagination"> <button>Anterior</button> <button class="active">1</button> <button>2</button>
+                    <button>3</button> <button>Siguiente</button> </div>
+            </div>
+        </div>
+    </div>
 </body>
-</html>
 
+</html>
